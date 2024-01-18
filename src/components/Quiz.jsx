@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QUESTIONS from "../Question";
+import quizComplete from "../assets/quiz-complete.png";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -12,6 +13,22 @@ const Quiz = () => {
       return [...prevAnswers, selectedAns];
     });
   };
+
+  const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
+
+  if (isQuizComplete) {
+    return (
+      <div id="summary">
+        <img src={quizComplete} alt="quiz-completed" />
+        <h2>Quiz completed!</h2>
+      </div>
+    );
+  }
+
+  //shuffling the answers by taking original array into one computed variable then
+  // sort it so that we can shuffle ans as per index
+  const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
+  shuffledAnswers.sort(() => Math.random - 0.5);
 
   return (
     <div id="quiz">
