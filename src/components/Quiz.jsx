@@ -27,7 +27,7 @@ const Quiz = () => {
   }
 
   //shuffling the answers by taking original array into one computed variable then
-  // sort it so that we can shuffle ans as per index
+  //sort it so that we can shuffle ans as per index
   const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
   shuffledAnswers.sort(() => Math.random - 0.5);
 
